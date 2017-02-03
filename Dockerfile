@@ -40,6 +40,8 @@ COPY configs/php/php.ini  /etc/php/7.1/fpm/php.ini
 COPY configs/php/xdebug.ini /etc/php/7.1/mods-available/xdebug.ini
 RUN ln -s /etc/php/7.1/mods-available/xdebug.ini /etc/php/7.1/fpm/conf.d/20-xdebug.ini
 RUN ln -s /etc/php/7.1/mods-available/xdebug.ini /etc/php/7.1/cli/conf.d/20-xdebug.ini
+RUN touch /var/log/xdebug.log
+RUN chmod 777 /var/log/xdebug.log
 
 #Install Percona Mysql 5.7 server
 RUN wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb
